@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Anime Search</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-size: cover;
+      background-position: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+    }
+    .search-box {
+      margin-top: 25vh;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 70%;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff4081;
+      color: white;
+      cursor: pointer;
+    }
+    #clock {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px black;
+    }
+    #quote {
+      margin-top: 10px;
+      font-size: 18px;
+      font-style: italic;
+      padding: 0 20px;
+      text-shadow: 1px 1px 2px black;
+    }
+  </style>
+  <script>
+    const wallpapers = [
+      "https://wallpapercave.com/wp/wp9392062.jpg", // Oshi no Ko
+      "https://wallpapercave.com/wp/wp11254470.jpg", // Hell's Paradise
+      "https://wallpapercave.com/wp/wp11722988.jpg", // Konosuba
+      "https://wallpapercave.com/wp/wp11254480.jpg", // Rent-a-Girlfriend
+      "https://wallpapercave.com/wp/wp11722991.jpg", // Tonikawa
+      "https://wallpapercave.com/wp/wp9392063.jpg", // Spy x Family
+      "https://wallpapercave.com/wp/wp9392064.jpg", // Witch Watch
+      "https://wallpapercave.com/wp/wp9392065.jpg", // Polyphonica
+      "https://wallpapercave.com/wp/wp9392066.jpg", // Horimiya
+      "https://wallpapercave.com/wp/wp9392067.jpg", // Couple of Cuckoos
+      "https://wallpapercave.com/wp/wp9392068.jpg", // Fruits Basket
+      "https://wallpapercave.com/wp/wp9392069.jpg"  // Shield Hero
+    ];
+
+    const quotes = [
+      "“Lies are only lies until they’re exposed as the truth.” – Ai Hoshino (Oshi no Ko)",
+      "“If you’re going to live, you might as well do it with style.” – Gabimaru (Hell’s Paradise)",
+      "“Explosion!” – Megumin (Konosuba)",
+      "“I want to be someone’s number one.” – Chizuru (Rent-a-Girlfriend)",
+      "“Even if we’re far apart, our hearts are still connected.” – Tsukasa (Tonikawa)",
+      "“I am a spy, not a killer.” – Loid Forger (Spy x Family)",
+      "“Magic is believing in yourself.” – Nico (Witch Watch)",
+      "“Music is the soul’s language.” – Corticarte (Polyphonica)",
+      "“I like you. That’s why I want to know everything about you.” – Miyamura (Horimiya)",
+      "“Even if we’re switched at birth, we can choose our own fate.” – Erika (Couple of Cuckoos)",
+      "“Kindness is stronger than any curse.” – Tohru Honda (Fruits Basket)",
+      "“I’ll protect them all, even if the world hates me.” – Naofumi (Shield Hero)"
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const today = new Date().getDate();
+      const index = today % wallpapers.length;
+      document.body.style.backgroundImage = `url('${wallpapers[index]}')`;
+
+      const quoteIndex = today % quotes.length;
+      document.getElementById('quote').textContent = quotes[quoteIndex];
+
+      updateClock();
+      setInterval(updateClock, 1000);
+    });
+
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+    }
+  </script>
+</head>
+<body>
+  <div class="search-box">
+    <form action="https://www.google.com/search" method="get">
+      <input type="text" name="q" placeholder="Recherche Google...">
+      <input type="submit" value="Rechercher">
+    </form>
+    <div id="clock"></div>
+    <div id="quote"></div>
+  </div>
+</body>
+</html>
