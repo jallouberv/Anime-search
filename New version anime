@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Anime Search by Thibaud</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-size: cover;
+      background-position: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+    }
+    .search-box {
+      margin-top: 20vh;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 70%;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff4081;
+      color: white;
+      cursor: pointer;
+    }
+    #clock {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px black;
+    }
+    #quote {
+      margin-top: 10px;
+      font-size: 18px;
+      font-style: italic;
+      padding: 0 20px;
+      text-shadow: 1px 1px 2px black;
+    }
+    iframe {
+      margin-top: 30px;
+      border: none;
+    }
+  </style>
+  <script>
+    const wallpapers = [
+      "https://images.alphacoders.com/145/1457196.jpg", // Oshi no Ko
+      "https://images.alphacoders.com/145/1457212.jpg", // Hell's Paradise
+      "https://images.alphacoders.com/145/1457220.jpg", // Konosuba
+      "https://images.alphacoders.com/145/1457230.jpg", // Rent-a-Girlfriend
+      "https://images.alphacoders.com/145/1457236.jpg", // Tonikawa
+      "https://images.alphacoders.com/145/1457240.jpg", // Spy x Family
+      "https://images.alphacoders.com/145/1457246.jpg", // Witch Watch
+      "https://images.alphacoders.com/145/1457250.jpg", // Polyphonica
+      "https://wallpapers.com/images/featured/horimiya-1d6v1x7tq1q2.jpg", // Horimiya
+      "https://wallpapers.com/images/featured/a-couple-of-cuckoos-1v6v1x7tq1q2.jpg", // Couple of Cuckoos
+      "https://images.alphacoders.com/145/1457261.jpg", // Fruits Basket
+      "https://images.alphacoders.com/145/1457266.jpg"  // Shield Hero
+    ];
+
+    const quotes = [
+      "“Lies are only lies until they’re exposed as the truth.” – Ai Hoshino (Oshi no Ko)",
+      "“If you’re going to live, you might as well do it with style.” – Gabimaru (Hell’s Paradise)",
+      "“Explosion!” – Megumin (Konosuba)",
+      "“I want to be someone’s number one.” – Chizuru (Rent-a-Girlfriend)",
+      "“Even if we’re far apart, our hearts are still connected.” – Tsukasa (Tonikawa)",
+      "“I am a spy, not a killer.” – Loid Forger (Spy x Family)",
+      "“Magic is believing in yourself.” – Nico (Witch Watch)",
+      "“Music is the soul’s language.” – Corticarte (Polyphonica)",
+      "“I like you. That’s why I want to know everything about you.” – Miyamura (Horimiya)",
+      "“Even if we’re switched at birth, we can choose our own fate.” – Erika (Couple of Cuckoos)",
+      "“Kindness is stronger than any curse.” – Tohru Honda (Fruits Basket)",
+      "“I’ll protect them all, even if the world hates me.” – Naofumi (Shield Hero)"
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const today = new Date().getDate();
+      const index = today % wallpapers.length;
+      document.body.style.backgroundImage = `url('${wallpapers[index]}')`;
+
+      const quoteIndex = today % quotes.length;
+      document.getElementById('quote').textContent = quotes[quoteIndex];
+
+      updateClock();
+      setInterval(updateClock, 1000);
+    });
+
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+    }
+  </script>
+</head>
+<body>
+  <div class="search-box">
+    <form action="https://www.google.com/search" method="get">
+      <input type="text" name="q" placeholder="Recherche Google...">
+      <input type="submit" value="Rechercher">
+    </form>
+    <div id="clock"></div>
+    <div id="quote"></div>
+  </div>
+
+  <!-- 🎵 Playlist YouTube Music -->
+  <div>
+    <iframe width="100%" height="315"
+      src="https://www.youtube.com/embed/videoseries?list=PLNu1mgjMQRb8iQnQp_gkxRA4uMQmdJHFt"
+      title="Playlist Anime Thibaud Jany"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+</body>
+</html>
